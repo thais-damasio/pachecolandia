@@ -1,6 +1,8 @@
 # ![Game][game] Pachecolândia ![Game][game]
 *[...] porque BigTasty é bom, mas engorda.*
 
+![Pachequito](https://github.com/Thais-Damasio/pachecolandia/blob/master/assets/img/pachequito.png?raw=true)
+
 ***
 Descrição
 ------
