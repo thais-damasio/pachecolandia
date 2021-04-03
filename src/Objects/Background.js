@@ -1,10 +1,10 @@
 import GameObject from './GameObject.js';
 
-const spritePath = './../../assets/sprites/sprites.png';
-const spriteX = 0;
-const spriteY = 148;
-const sWidth = 433;
-const sHeight = 258;
+const SPRITE_PATH = './../../assets/sprites/sprites.png';
+const SPRITE_X = 0;
+const SPRITE_Y = 148;
+const S_WIDTH = 433;
+const S_HEIGHT = 258;
 
 class Background extends GameObject {
     /**
@@ -14,9 +14,9 @@ class Background extends GameObject {
      * @return Background
      */
     constructor(canvasWidth, canvasHeight) {
-        const x = 0, y = (canvasHeight - sHeight);
+        const x = 0, y = (canvasHeight - S_HEIGHT);
 
-        super(spritePath, spriteX, spriteY, sWidth, sHeight, x, y);
+        super(SPRITE_PATH, SPRITE_X, SPRITE_Y, S_WIDTH, S_HEIGHT, x, y);
         this._startup(canvasWidth, canvasHeight);
     }
 
