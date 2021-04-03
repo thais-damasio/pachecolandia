@@ -7,18 +7,29 @@ class Engine {
      * @return Engine
      */
     constructor(canvas) {
-        this.objects = [];
+        this._objects = [];
         this.canvas = canvas;
         this.context = canvas.getContext("2d");
+        this._preRenderingEvent = () => { };
+    }
+
+    /**
+     * Sets the pre-rendering function
+     * @param {function} callback - Callback to be executed before rendering the game
+     * @return void
+     */
+    setPreRendering(callback = () => { }) {
+        this._preRenderingEvent = callback;
     }
 
     /**
      * Registers new game object in the Engine
-     * @param {GameObject} obj - New game object to be rendered
+     * @param {GameObject|GameObject[]} obj - New game object or game object collection
+     * to be rendered
      * @return void
      */
     registerObject(obj) {
-        this.objects.push(obj);
+        this._objects.push(obj);
     }
 
     /**
@@ -26,8 +37,12 @@ class Engine {
      * @return void
      */
     loadGame() {
-        this.objects.forEach((o) => {
-            o.draw(this.context);
+        this._preRenderingEvent();
+        this._objects.forEach((object) => {
+            if (Array.isArray(object))
+                object.forEach((element) => element.draw(this.context));
+            else
+                object.draw(this.context);
         });
 
         requestAnimationFrame(this.loadGame.bind(this));

@@ -2,12 +2,12 @@ class GameObject {
     /**
      * Constructor
      * @param {String} spritesPath - Path to sprites image
-     * @param {number} sX - Sprite `x` axis
-     * @param {number} sY - Sprite `y` axis
+     * @param {number} sX - Sprite `x`-axis
+     * @param {number} sY - Sprite `y`-axis
      * @param {number} sWidth - Sprite width
      * @param {number} sHeight - Sprite height
-     * @param {number} x - `x` axis to render
-     * @param {number} y - `y` axis to render
+     * @param {number} x - `x`-axis to render
+     * @param {number} y - `y`-axis to render
      * @param {number} scale - scale to render the game object
      * @return GameObject
      */
@@ -71,6 +71,19 @@ class GameObject {
 
         // Restore canvas state as saved from above
         context.restore();
+    }
+
+    /**
+     * Check if the instance intersects with another object
+     * @param {GameObject} object - Object to check if it intersects with the
+     * game object instance
+     * @return Boolean
+     */
+    hasIntersection(object) {
+        return !(object.x > (this.x + this.width) ||
+            (object.x + object.width) < this.x ||
+            object.y > (this.y + this.height) ||
+            (object.y + object.height) < this.y);
     }
 }
 

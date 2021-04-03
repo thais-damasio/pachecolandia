@@ -1,29 +1,19 @@
-import GameObject from './GameObject.js';
+import ScoredObject from './ScoredObject.js';
 
-const spritePath = './../../assets/sprites/sprites.png';
-const spriteX = 100;
-const spriteY = 0;
-const sWidth = 100;
-const sHeight = 70;
+const SPRITE_PATH = './../../assets/sprites/sprites.png';
+const SPRITE_X = 100;
+const SPRITE_Y = 0;
+const S_WIDTH = 100;
+const S_HEIGHT = 70;
 
-class BigTasty extends GameObject {
+class BigTasty extends ScoredObject {
     /**
      * Constructor
+     * @param {number} x - `x`-axis to render
      * @return BigTasty
      */
-    constructor() {
-        const x = 50, y = 10;
-
-        super(spritePath, spriteX, spriteY, sWidth, sHeight, x, y, 0.6);
-    }
-
-    /**
-     * Draws the game object on the canvas
-     * @param {CanvasRenderingContext2D} context - Canvas context
-     * @return void
-     */
-    draw(context) {
-        super.draw(context);
+    constructor(x) {
+        super(SPRITE_PATH, SPRITE_X, SPRITE_Y, S_WIDTH, S_HEIGHT, x, 0.6);
     }
 };
 
