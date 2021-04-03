@@ -1,11 +1,15 @@
 import DirectionsEnum from '../../utils/enum/Directions.enum.js';
 import GameObject from './GameObject.js';
 
-const spritePath = './../../assets/sprites/sprites.png';
-const spriteX = 434;
-const spriteY = 0;
-const sWidth = 125;
-const sHeight = 170;
+const SPRITE_PATH = './../../assets/sprites/sprites.png';
+const SPRITE_X = 434;
+const SPRITE_Y = 0;
+const S_WIDTH = 125;
+const S_HEIGHT = 170;
+const SPEED_LIMIT_X = 5;
+const SPEED_Y = -7;
+const ACCELERATION = 0.01;
+const GRAVITY = 0.02;
 
 class Pachequito extends GameObject {
     /**
@@ -16,11 +20,11 @@ class Pachequito extends GameObject {
      * @return Pachequito
      */
     constructor(groundHeight, canvasWidth, canvasHeight) {
-        super(spritePath, spriteX, spriteY, sWidth, sHeight, 0, 0, 0.5);
+        super(SPRITE_PATH, SPRITE_X, SPRITE_Y, S_WIDTH, S_HEIGHT, 0, 0, 0.5);
 
         this.x = (canvasWidth - this.width) / 2;
         this.y = (canvasHeight - groundHeight - this.height)
-        this._startup(canvasWidth, canvasHeight);
+        this._startup(canvasWidth, canvasHeight, groundHeight);
     }
 
     /**
@@ -28,21 +32,23 @@ class Pachequito extends GameObject {
      * @private
      * @param {number} canvasWidth - Game canvas width
      * @param {number} canvasHeight - Game canvas height
+     * @param {number} groundHeight - Ground height
      * @return void
      */
-    _startup(canvasWidth, canvasHeight) {
-        this.canvasWidth = canvasWidth;
-        this.canvasHeight = canvasHeight;
-        this.currentFrame = 0;
-        this.countBlinkFrames = 0;
+    _startup(canvasWidth, canvasHeight, groundHeight) {
+        this._groundHeight = groundHeight;
+        this._canvasWidth = canvasWidth;
+        this._canvasHeight = canvasHeight;
+        this._currentFrame = 0;
+        this._countBlinkFrames = 0;
         this.speedX = 0;
         this.speedY = 0;
-        this.countFramesSpeeding = 0;
-        this.countFramesPulando = 0;
-        this.walkDirection = false;
+        this._countFramesSpeeding = 0;
+        this._countFramesJumping = 0;
+        this._walkDirection = false;
         this.movimentos = [
-            { spriteX: 434, spriteY: 0, },
-            { spriteX: 434, spriteY: 170 }
+            { sX: 434, sY: 0, },
+            { sX: 434, sY: 170 }
         ];
     }
 
@@ -54,22 +60,22 @@ class Pachequito extends GameObject {
      */
     draw(context) {
         this.update();
-        const { spriteX, spriteY } = this.movimentos[this.currentFrame];
-        this.sX = spriteX;
-        this.sY = spriteY;
+        const { sX, sY } = this.movimentos[this._currentFrame];
+        this.sX = sX;
+        this.sY = sY;
 
         super.draw(context);
     }
 
     /**
      * Changes the direction in which the game object moves
-     * @param {string} newDirection - New direction to walk
+     * @param {string|false} newDirection - New direction to walk
      * @return void
      */
-    changeDirection(newDirection) {
-        if (this.walkDirection != newDirection) {
-            this.walkDirection = newDirection;
-            this.countFramesSpeeding = 0;
+    walk(newDirection) {
+        if (this._walkDirection != newDirection) {
+            this._walkDirection = newDirection;
+            this._countFramesSpeeding = 0;
         }
     }
 
@@ -80,7 +86,19 @@ class Pachequito extends GameObject {
     update() {
         this._handleBlink();
         this._handleWalk();
-        // this.handleGravity();
+        this._handleGravity();
+    }
+
+    /**
+     * Updates the pachequito to jump in the game
+     * @return void
+     */
+    jump() {
+        const isOnTheGround = this.y === (this._canvasHeight - this._groundHeight - this.height);
+        if (isOnTheGround) {
+            this._countFramesJumping = 0;
+            this.speedY = SPEED_Y;
+        }
     }
 
     /**
@@ -89,21 +107,21 @@ class Pachequito extends GameObject {
      * @return void
      */
     _handleBlink() {
-        this.countBlinkFrames++;
-        if (this.countBlinkFrames == 1) {
-            this.currentFrame = 1;
+        this._countBlinkFrames++;
+        if (this._countBlinkFrames == 1) {
+            this._currentFrame = 1;
         }
-        else if (this.countBlinkFrames == 10) {
-            this.currentFrame = 0;
+        else if (this._countBlinkFrames == 10) {
+            this._currentFrame = 0;
         }
-        else if (this.countBlinkFrames == 20) {
-            this.currentFrame = 1;
+        else if (this._countBlinkFrames == 20) {
+            this._currentFrame = 1;
         }
-        else if (this.countBlinkFrames == 30) {
-            this.currentFrame = 0;
+        else if (this._countBlinkFrames == 30) {
+            this._currentFrame = 0;
         }
-        else if (this.countBlinkFrames == 90) {
-            this.countBlinkFrames = 0;
+        else if (this._countBlinkFrames == 90) {
+            this._countBlinkFrames = 0;
         }
     }
 
@@ -113,87 +131,61 @@ class Pachequito extends GameObject {
      * @return void
      */
     _handleWalk() {
-        const speedLimit = 5;
-        let speed = 0.01;
+        // Moves the pachequito to the right or left direction
+        let factor = (this._walkDirection === DirectionsEnum.right) ? 1 : -1;
 
-        let factor;
-        if (this.walkDirection === DirectionsEnum.right)
-            factor = 1;
-        else if (this.walkDirection === DirectionsEnum.left)
-            factor = -1;
+        // Slows down the pachequito
+        if (!this._walkDirection)
+            factor = (this.speedX < 0) ? 1 : -1;
+
+        this.speedX = this.speedX + ACCELERATION * this._countFramesSpeeding * factor;
+        // Limits pachequito speed
+        if (Math.abs(this.speedX) > SPEED_LIMIT_X)
+            this.speedX = SPEED_LIMIT_X * factor;
+        // Stop the pachequito when he it doesn't slip anymore
+        if (!this._walkDirection && ((this.speedX <= 0 && factor <= 0) || (this.speedX >= 0 && factor >= 0))) {
+            this.speedX = 0;
+
+            return;
+        }
+
+        const isCollidedRigthSideBoundary = this.x >= (this._canvasWidth - this.width);
+        const isCollidedLeftSideBoundary = this.x <= 0;
+
+        // Moves the pachequito when it doesn't collide with the canvas boundary
+        const isCollided = isCollidedRigthSideBoundary || isCollidedLeftSideBoundary;
+        if (!isCollided)
+            this.x += this.speedX;
         else {
-            if (this.speedX > 0) {
-                factor = -1;
-                speed = 0.01;
-            }
-            else if (this.speedX < 0) {
-                factor = 1;
-                speed = 0.01;
-            }
-            else factor = 0;
-        }
+            this.speedX = 0;
 
-        this.speedX = this.speedX + speed * this.countFramesSpeeding * factor;
-
-        if (!this.walkDirection) {
-            if ((this.speedX < 0 && factor < 0) || (this.speedX > 0 && factor > 0)) {
-                this.speedX = 0;
-            }
-        }
-
-        if (Math.abs(this.speedX) > speedLimit) {
-            this.speedX = speedLimit * factor;
-        }
-
-        this.countFramesSpeeding++;
-
-        if (this.speedX > 0) { //Direita
-            //Aplicar posição
-            const collided = this.x >= (this.canvasWidth - (this.width - 50));
-            if (!collided) {
-                this.x = this.x + this.speedX;
-                // planoDeFundo.mover(-2);
-            }
-            else {
-                this.speedX = 0;
-                this.x -= 1;
-                // planoDeFundo.mover(1);
-            }
-        }
-        else if (this.speedX < 0) { //Esquerda
-            //Aplicar posição
-            const collided = this.x <= 0;
-            if (!collided) {
-                this.x = this.x + this.speedX;
-                // planoDeFundo.mover(2);
-            }
-            else {
-                this.speedX = 0;
+            if (isCollidedLeftSideBoundary)
                 this.x += 1;
-                // planoDeFundo.mover(-1);
-            }
-        }
-    }
-
-    jump() {
-        if (this.y == chaoBase) {
-            this.countFramesPulando = 0;
-            this.velocidadeY = -4;
+            else
+                this.x -= 1;
         }
 
+        this._countFramesSpeeding++;
     }
 
-    handleGravity() {
-        const gravidade = 0.02;
-        this.countFramesPulando++;
-        this.velocidadeY = this.velocidadeY + gravidade * this.countFramesPulando;
-        this.y = this.y + this.velocidadeY;
+    /**
+     * Handles when the game object will be jumping
+     * @private
+     * @return void
+     */
+    _handleGravity() {
+        const groundY = (this._canvasHeight - this._groundHeight - this.height);
+        this.speedY += GRAVITY * this._countFramesJumping;
+        this.y += this.speedY;
 
-        if (this.y >= chaoBase) {
-            this.y = chaoBase;
-            this.velocidadeY = 0;
-        } else {
-            this.y = this.y + this.velocidadeY;
+        // Makes the pachequito fall
+        if (this.y >= groundY) {
+            this.y = (this._canvasHeight - this._groundHeight - this.height);
+            this.speedY = 0;
+        }
+        // Makes the pachequito jump
+        else {
+            this._countFramesJumping++;
         }
     }
 }

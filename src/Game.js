@@ -1,3 +1,4 @@
+import DirectionsEnum from '../utils/enum/Directions.enum.js';
 import BackgroundObj from './Objects/Background.js';
 import PachequitoObj from './Objects/Pachequito.js';
 import BigTastyObj from './Objects/BigTasty.js';
@@ -34,39 +35,45 @@ class Game {
         this.engine.registerObject(bigTastyObj);
         this.engine.registerObject(heartObj);
 
-        // this._registerLeftAndRightKeyAction(pachequitoObj);
-        // this._registerUpKeyAction();
+        this._registerKeyDownActions(pachequitoObj);
+        this._registerKeyUpActions(pachequitoObj);
         this.engine.loadGame();
     }
 
-    // /**
-    //  * 
-    //  * @param {PachequitoObj} pachequitoObj 
-    //  */
-    // _registerLeftAndRightKeyAction(pachequitoObj) {
-    //     window.addEventListener('keydown', function (ev) {
-    //         if (ev.key === 'ArrowRight') {
-    //             pachequitoObj.changeDirection("Right");
-    //         }
-    //         else if (ev.key === 'ArrowLeft') {
-    //             pachequitoObj.changeDirection("Left");
-    //         }
-    //         else if (ev.key === 'ArrowUp') {
-    //             pachequitoObj.jump();
-    //         }
-    //     });
-    // }
+    /**
+     * Registers the buttons' events (keydown) of the game
+     * @param {PachequitoObj} pachequitoObj - Object which represents Pachequito
+     * @return void
+     */
+    _registerKeyDownActions(pachequitoObj) {
+        window.addEventListener('keydown', function (ev) {
+            if (ev.key === 'ArrowRight') {
+                pachequitoObj.walk(DirectionsEnum.right);
+            }
+            else if (ev.key === 'ArrowLeft') {
+                pachequitoObj.walk(DirectionsEnum.left);
+            }
+            else if (ev.key === 'ArrowUp') {
+                pachequitoObj.jump();
+            }
+        });
+    }
 
-    // _registerUpKeyAction() {
-    //     window.addEventListener('keyup', function (ev) {
-    //         if (ev.key === 'ArrowRight') {
-    //             pachequito.mudarSentido(false);
-    //         }
-    //         else if (ev.key === 'ArrowLeft') {
-    //             pachequito.mudarSentido(false);
-    //         }
-    //     });
-    // }
+    /**
+     * Registers the buttons' events (keydown) of the game
+     * @param {PachequitoObj} pachequitoObj - Object which represents Pachequito
+     * @return void
+     */
+    _registerKeyUpActions(pachequitoObj) {
+        window.addEventListener('keyup', function (ev) {
+            if (ev.key === 'ArrowRight') {
+                pachequitoObj.walk(false);
+            }
+            else if (ev.key === 'ArrowLeft') {
+                pachequitoObj.walk(false);
+            }
+        });
+    }
 }
 
 
