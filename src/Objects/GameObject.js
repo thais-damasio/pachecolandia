@@ -12,7 +12,10 @@ class GameObject {
      * @return GameObject
      */
     constructor(spritesPath, sX, sY, sWidth, sHeight, x = 0, y = 0, scale = 1) {
-        (this.sprites = new Image()).src = spritesPath;
+        if (spritesPath)
+            (this.sprites = new Image()).src = spritesPath;
+        else
+            this.sprites = null;
         this.sX = sX;
         this.sY = sY;
         this.sWidth = sWidth;

@@ -1,6 +1,7 @@
 import ScoredObject from './ScoredObject.js';
 
 const SPRITE_PATH = './../../assets/sprites/sprites.png';
+const SCORE_VALUE = 10;
 const SPRITE_X = 200;
 const SPRITE_Y = 0;
 const S_WIDTH = 100;
@@ -13,7 +14,7 @@ class Heart extends ScoredObject {
      * @return Heart
      */
     constructor(x) {
-        super(SPRITE_PATH, SPRITE_X, SPRITE_Y, S_WIDTH, S_HEIGHT, x, 0.5);
+        super(SCORE_VALUE, SPRITE_PATH, SPRITE_X, SPRITE_Y, S_WIDTH, S_HEIGHT, x, 0.5);
     }
 }
 

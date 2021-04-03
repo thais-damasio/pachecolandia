@@ -5,6 +5,7 @@ const SPEED_Y = 1.5;
 class ScoredObject extends GameObject {
     /**
      * Constructor
+     * @param {number} scoreValue - Object score value
      * @param {String} spritesPath - Path to sprites image
      * @param {number} sX - Sprite `x`-axis
      * @param {number} sY - Sprite `y`-axis
@@ -14,19 +15,21 @@ class ScoredObject extends GameObject {
      * @param {number} scale - scale to render the game object
      * @return ScoredObject
      */
-    constructor(spritesPath, sX, sY, sWidth, sHeight, x = 0, scale = 1) {
+    constructor(scoreValue, spritesPath, sX, sY, sWidth, sHeight, x = 0, scale = 1) {
         super(spritesPath, sX, sY, sWidth, sHeight, x, 0, scale);
         this.y = -this.height;
 
-        this._startup();
+        this._startup(scoreValue);
     }
 
     /**
      * Initializes the variables
      * @private
+     * @param {number} scoreValue - Object score value
      * @return void
      */
-    _startup() {
+    _startup(scoreValue) {
+        this.scoreValue = scoreValue;
         this.catched = false;
         this._rotation = 0;
     }
