@@ -4,40 +4,47 @@ class Engine {
     /**
      * Constructor
      * @param {HTMLCanvasElement} canvas - Canvas to render the game
-     * @return Engine
+     * @return {Engine}
      */
-    constructor(canvas) {
-        this._objects = [];
+    constructor(canvas, screens, activeScreenDefault) {
         this.canvas = canvas;
         this.context = canvas.getContext("2d");
         this._preRenderingEvent = () => { };
+        this._screens = screens;
+        this._activeScreen = this._oldScreen = activeScreenDefault;
+        this._objects = this._screens[this._activeScreen].load(this);
     }
 
     /**
      * Sets the pre-rendering function
      * @param {function} callback - Callback to be executed before rendering the game
-     * @return void
+     * @return {void}
      */
     setPreRendering(callback = () => { }) {
         this._preRenderingEvent = callback;
     }
 
     /**
-     * Registers new game object in the Engine
-     * @param {GameObject|GameObject[]} obj - New game object or game object collection
-     * to be rendered
-     * @return void
+     * Changes the active screen
+     * @param {String} screenName - The name of the screen that will be active
+     * @return {void}
      */
-    registerObject(obj) {
-        this._objects.push(obj);
+    setActivePage(screenName) {
+        this._oldScreen = this._activeScreen;
+        this._activeScreen = screenName;
     }
 
     /**
      * Loop function which renders the game frames
-     * @return void
+     * @return {void}
      */
     loadGame() {
+        if (this._screens[this._oldScreen] !== this._screens[this._activeScreen]) {
+            this._oldScreen = this._activeScreen;
+            this._objects = this._screens[this._activeScreen].load(this);
+        }
         this._preRenderingEvent();
+
         this._objects.forEach((object) => {
             if (Array.isArray(object))
                 object.forEach((element) => element.draw(this.context));
