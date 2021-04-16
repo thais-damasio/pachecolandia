@@ -4,6 +4,8 @@ class Engine {
     /**
      * Constructor
      * @param {HTMLCanvasElement} canvas - Canvas to render the game
+     * @param {HTMLCanvasElement} canvas - Canvas to render the game
+     * @param {HTMLCanvasElement} canvas - Canvas to render the game
      * @return {Engine}
      */
     constructor(canvas, screens, activeScreenDefault) {
@@ -41,6 +43,7 @@ class Engine {
     loadGame() {
         if (this._screens[this._oldScreen] !== this._screens[this._activeScreen]) {
             this._oldScreen = this._activeScreen;
+            this._preRenderingEvent = () => { };
             this._objects = this._screens[this._activeScreen].load(this);
         }
         this._preRenderingEvent();

@@ -1,15 +1,25 @@
 import RandomNumber from '../../utils/tools/randomNumber.js';
 import KeyDownAction from '../Actions/KeyDown.action.js';
 import ScoredObject from '../Objects/ScoredObject.js';
+import GameEventHandler from '../GameEventHandler.js';
 import KeyUpAction from '../Actions/KeyUp.action.js';
 import BackgroundObj from '../Objects/Background.js';
 import PachequitoObj from '../Objects/Pachequito.js';
 import ScoreLabelObj from '../Objects/ScoreLabel.js';
+import PachecoLife from '../Objects/PachecoLife.js';
 import BigTastyObj from '../Objects/BigTasty.js';
 import FriesObj from '../Objects/Fries.js';
 import HeartObj from '../Objects/Heart.js';
 import GameScreen from './GameScreen.js';
 import Engine from '../Engine.js';
+
+const SCORE_SOUND = new Audio();
+SCORE_SOUND.src = '../../assets/sounds/score.wav';
+SCORE_SOUND.volume = 0.4;
+
+const DENY_SOUND = new Audio();
+DENY_SOUND.src = '../../assets/sounds/deny.wav';
+DENY_SOUND.volume = 0.4;
 
 const TOTAL_SCORED_OBJECTS = 4;
 const TYPES_SCORED_OBJECTS = [
@@ -17,6 +27,8 @@ const TYPES_SCORED_OBJECTS = [
     { class: BigTastyObj, max: 3, total: 0 },
     { class: HeartObj, max: 1, total: 0 }
 ];
+
+const TOTAL_LIFES = 3;
 
 class CatchHeartScreen extends GameScreen {
     /**
@@ -51,8 +63,11 @@ class CatchHeartScreen extends GameScreen {
         this._pachequitoObj = new PachequitoObj(this._backgroundObj.groundHeight, this._canvasWidth, this._canvasHeight);
         this._scoredObjects = this._criateScoredObjects();
         this._scoreLabelObj = new ScoreLabelObj(0);
+        this._pachecoLife = new PachecoLife(TOTAL_LIFES, this._scoreLabelObj.x);
 
-        return [this._backgroundObj, this._pachequitoObj, this._scoredObjects, this._scoreLabelObj];
+        return [
+            this._backgroundObj, this._pachequitoObj, this._scoredObjects, this._scoreLabelObj, this._pachecoLife
+        ];
     }
 
     /**
@@ -119,21 +134,30 @@ class CatchHeartScreen extends GameScreen {
      */
     _updateScoredObjects() {
         const types = [...TYPES_SCORED_OBJECTS];
-        this._scoredObjects.forEach((obj, key) => {
-            if (!obj.catched) {
-                obj.catched = obj.hasIntersection(this._pachequitoObj);
-                if (obj.catched)
-                    this._scoreLabelObj.totalScore += obj.scoreValue;
-            }
+        if (this._pachecoLife.hasLifes())
+            this._scoredObjects.forEach((obj, key) => {
+                if (!obj.catched) {
+                    obj.catched = obj.hasIntersection(this._pachequitoObj);
+                    if (obj.catched && obj.scoreValue > 0) {
+                        this._scoreLabelObj.totalScore += obj.scoreValue;
+                        SCORE_SOUND.play();
+                    }
+                    else if (obj.catched) {
+                        this._pachecoLife.lostLifes++;
+                        DENY_SOUND.play();
+                    }
+                }
 
-            if (obj.y >= this._canvasHeight) {
-                const randomKey = RandomNumber.generateKeyRandomForArray(types.length);
-                const selectedType = types[randomKey];
+                if (obj.y >= this._canvasHeight) {
+                    const randomKey = RandomNumber.generateKeyRandomForArray(types.length);
+                    const selectedType = types[randomKey];
 
-                const x = RandomNumber.generateRandomInt(0, this._canvasWidth);
-                this._scoredObjects[key] = new selectedType.class(x);
-            }
-        });
+                    const x = RandomNumber.generateRandomInt(0, this._canvasWidth);
+                    this._scoredObjects[key] = new selectedType.class(x);
+                }
+            });
+        else
+            GameEventHandler.dispatchEvent("GAMEOVER");
     }
 }
 
