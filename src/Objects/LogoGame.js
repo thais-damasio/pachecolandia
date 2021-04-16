@@ -16,7 +16,9 @@ class LogoGame extends GameObject {
      * @return LogoGame
      */
     constructor(canvasWidth, canvasHeight) {
-        super(SPRITE_PATH, SPRITE_X, SPRITE_Y, S_WIDTH, S_HEIGHT, 25, 50, 0.9);
+        const y = canvasHeight * 0.1;
+        super(SPRITE_PATH, SPRITE_X, SPRITE_Y, S_WIDTH, S_HEIGHT, 0, y, 0.8);
+        this.x = (canvasWidth - this.width) / 2;
         this._startup(canvasWidth, canvasHeight);
     }
 

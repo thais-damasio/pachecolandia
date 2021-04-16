@@ -1,3 +1,4 @@
+import GameEventHandler from '../GameEventHandler.js';
 import BackgroundObj from '../Objects/Background.js';
 import PachequitoObj from '../Objects/Pachequito.js';
 import ScoreLabelObj from '../Objects/ScoreLabel.js';
@@ -20,6 +21,7 @@ class StartGameScreen extends GameScreen {
      * @return {Array<GameObject|GameObject[]>}
      */
     load() {
+        this._ClickAction();
         return this._loadObjects();
     }
 
@@ -36,6 +38,21 @@ class StartGameScreen extends GameScreen {
 
         return [this._backgroundObj, this._pachequitoObj, this._scoreLabelObj, this._logoGameObj];
     }
+
+
+    /**
+     * Registers the game's click event
+     * @private
+     * @return {void}
+     */
+    _ClickAction() {
+        const startGame = () => {
+            GameEventHandler.dispatchEvent("START");
+            removeEventListener('click', startGame)
+        }
+        addEventListener('click', startGame);
+    }
+
 }
 
 export default StartGameScreen;
