@@ -3,9 +3,11 @@
 <p align="center">
     <em>
 [...] porque BigTasty é bom, mas engorda.</em></br>
-  <img alt="Logo do projeto" src="./assets/img/pachequito.png" />
+  <a href="https://pachecolandia.herokuapp.com/"><img alt="Logo do projeto" src="./assets/img/pachequito.png" /></a>
 </p>
 
+
+Acesse o jogo [aqui](https://pachecolandia.herokuapp.com/) ![love][Heart].
 ***
 ## Descrição
 Este projeto surgiu a partir de um personagem criado por [Thaís](https://github.com/Thais-Damasio) através de uma brincadeira feita com [Vinícius](https://github.com/viniciussp4). Os dois se propuseram criar um jogo desenvolvido puramente com Javascritpt, CSS e HTML. A ideia principal do projeto seria construir uma estrutura organizada e didática para que possa ser feito outros jogos em Javascript através da mesma.
