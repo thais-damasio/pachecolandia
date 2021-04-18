@@ -1,5 +1,3 @@
-import GameObject from './Objects/GameObject.js';
-
 class Engine {
     /**
      * Constructor
