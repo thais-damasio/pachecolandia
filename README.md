@@ -1,7 +1,10 @@
 # ![Game][game] Pachecolândia ![Game][game]
-*[...] porque BigTasty é bom, mas engorda.*
 
-![Pachequito](https://github.com/Thais-Damasio/pachecolandia/blob/master/assets/img/pachequito.png?raw=true)
+<p align="center">
+    <em>
+[...] porque BigTasty é bom, mas engorda.</em></br>
+  <img alt="Logo do projeto" src="./assets/img/pachequito.png" />
+</p>
 
 ***
 ## Descrição
@@ -34,3 +37,7 @@ O sistema trabalha somente com o uso de HTML, CSS e Javascript. Porém, no ambie
 ***
 ## Agradecimentos
 Nos inspiramos no projeto [*Flappy Bird: Dev Soutinho*](https://github.com/omariosouto/flappy-bird-devsoutinho) para criar o Pachecolândia. Sugerimos dar uma olhada nesse outro jogo feito em Javascript também :D
+
+***
+## Licença do Projeto
+[MIT License](./LICENSE.md) © [Thaís Damásio](https://github.com/Thais-Damasio)
