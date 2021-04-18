@@ -7,8 +7,8 @@
     "lib": "lib"
   },
   "scripts": {
-    "dev": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack serve --mode development",
+    "build": "webpack --mode production"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +16,15 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "@babel/core": "^7.13.15",
+    "@babel/preset-env": "^7.13.15",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.2",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.1",
+    "mini-css-extract-plugin": "^1.5.0",
+    "webpack": "^5.33.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
   }
 }

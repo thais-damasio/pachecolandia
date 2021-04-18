@@ -1,6 +1,6 @@
+import SpriteImg from './../../assets/sprites/background.png';
 import GameObject from './GameObject.js';
 
-const SPRITE_PATH = './../../assets/sprites/background.png';
 const SPRITE_X = 0;
 const SPRITE_Y = 0;
 const S_WIDTH = 430;
@@ -16,7 +16,7 @@ class Background extends GameObject {
     constructor(canvasWidth, canvasHeight) {
         const x = 0, y = (canvasHeight - S_HEIGHT);
 
-        super(SPRITE_PATH, SPRITE_X, SPRITE_Y, S_WIDTH, S_HEIGHT, x, y);
+        super(SpriteImg, SPRITE_X, SPRITE_Y, S_WIDTH, S_HEIGHT, x, y);
         this._startup(canvasWidth, canvasHeight);
     }
 

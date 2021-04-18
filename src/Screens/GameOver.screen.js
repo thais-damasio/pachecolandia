@@ -1,9 +1,10 @@
-import GameEventHandler from '../GameEventHandler.js';
-import GameOverObj from '../Objects/GameOver.js';
+import GameOverSound from './../../assets/sounds/game_over.wav';
+import GameEventHandler from './../GameEventHandler.js';
+import GameOverObj from './../Objects/GameOver.js';
 import GameScreen from './GameScreen.js';
 
 const GAMEOVER_SOUND = new Audio();
-GAMEOVER_SOUND.src = '../assets/sounds/game_over.wav';
+GAMEOVER_SOUND.src = GameOverSound;
 
 class GameOverScreen extends GameScreen {
     /**

@@ -1,6 +1,6 @@
+import SpriteImg from './../../assets/sprites/fries.png';
 import ScoredObject from './ScoredObject.js';
 
-const SPRITE_PATH = './../../assets/sprites/fries.png';
 const SCORE_VALUE = 0;
 const SPRITE_X = 0;
 const SPRITE_Y = 0;
@@ -14,7 +14,7 @@ class Fries extends ScoredObject {
      * @return Fries
      */
     constructor(x) {
-        super(SCORE_VALUE, SPRITE_PATH, SPRITE_X, SPRITE_Y, S_WIDTH, S_HEIGHT, x, 0.4);
+        super(SCORE_VALUE, SpriteImg, SPRITE_X, SPRITE_Y, S_WIDTH, S_HEIGHT, x, 0.4);
     }
 }
 

@@ -1,7 +1,7 @@
 import DirectionsEnum from '../../utils/enum/Directions.enum.js';
+import SpriteImg from './../../assets/sprites/pachequito.png';
 import GameObject from './GameObject.js';
 
-const SPRITE_PATH = './../../assets/sprites/pachequito.png';
 const SPRITE_X = 0;
 const SPRITE_Y = 0;
 const S_WIDTH = 125;
@@ -20,7 +20,7 @@ class Pachequito extends GameObject {
      * @return Pachequito
      */
     constructor(groundHeight, canvasWidth, canvasHeight) {
-        super(SPRITE_PATH, SPRITE_X, SPRITE_Y, S_WIDTH, S_HEIGHT, 0, 0, 0.5);
+        super(SpriteImg, SPRITE_X, SPRITE_Y, S_WIDTH, S_HEIGHT, 0, 0, 0.5);
 
         this.x = (canvasWidth - this.width) / 2;
         this.y = (canvasHeight - groundHeight - this.height)

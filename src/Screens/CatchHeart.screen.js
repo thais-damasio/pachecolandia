@@ -3,6 +3,8 @@ import KeyDownAction from '../Actions/KeyDown.action.js';
 import ScoredObject from '../Objects/ScoredObject.js';
 import GameEventHandler from '../GameEventHandler.js';
 import KeyUpAction from '../Actions/KeyUp.action.js';
+import ScoreSound from '../../assets/sounds/score.wav';
+import DenySound from '../../assets/sounds/deny.wav';
 import BackgroundObj from '../Objects/Background.js';
 import PachequitoObj from '../Objects/Pachequito.js';
 import ScoreLabelObj from '../Objects/ScoreLabel.js';
@@ -15,11 +17,11 @@ import GameScreen from './GameScreen.js';
 import Engine from '../Engine.js';
 
 const SCORE_SOUND = new Audio();
-SCORE_SOUND.src = '../../assets/sounds/score.wav';
+SCORE_SOUND.src = ScoreSound;
 SCORE_SOUND.volume = 0.4;
 
 const DENY_SOUND = new Audio();
-DENY_SOUND.src = '../../assets/sounds/deny.wav';
+DENY_SOUND.src = DenySound;
 DENY_SOUND.volume = 0.4;
 
 const TOTAL_SCORED_OBJECTS = 4;

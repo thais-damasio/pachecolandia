@@ -1,6 +1,6 @@
+import SpriteImg from "./../../assets/sprites/start.png";
 import GameObject from './GameObject.js';
 
-const SPRITE_PATH = "./../../assets/sprites/start.png";
 const SPRITE_X = 0;
 const SPRITE_Y = 0;
 const S_WIDTH = 713;
@@ -17,7 +17,7 @@ class LogoGame extends GameObject {
      */
     constructor(canvasWidth, canvasHeight) {
         const y = canvasHeight * 0.1;
-        super(SPRITE_PATH, SPRITE_X, SPRITE_Y, S_WIDTH, S_HEIGHT, 0, y, 0.48);
+        super(SpriteImg, SPRITE_X, SPRITE_Y, S_WIDTH, S_HEIGHT, 0, y, 0.48);
         this.x = (canvasWidth - this.width) / 2;
         this._startup(canvasWidth, canvasHeight);
     }

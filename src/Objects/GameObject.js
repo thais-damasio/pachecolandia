@@ -1,7 +1,7 @@
 class GameObject {
     /**
      * Constructor
-     * @param {String} spritesPath - Path to sprites image
+     * @param {String} spritesImg - Path to sprites image
      * @param {number} sX - Sprite `x`-axis
      * @param {number} sY - Sprite `y`-axis
      * @param {number} sWidth - Sprite width
@@ -11,9 +11,9 @@ class GameObject {
      * @param {number} scale - scale to render the game object
      * @return GameObject
      */
-    constructor(spritesPath, sX, sY, sWidth, sHeight, x = 0, y = 0, scale = 1) {
-        if (spritesPath)
-            (this.sprites = new Image()).src = spritesPath;
+    constructor(spritesImg, sX, sY, sWidth, sHeight, x = 0, y = 0, scale = 1) {
+        if (spritesImg)
+            (this.sprites = new Image()).src = spritesImg;
         else
             this.sprites = null;
         this.sX = sX;

@@ -1,6 +1,6 @@
+import SpriteImg from './../../assets/sprites/pachequito.png';
 import GameObject from './GameObject.js';
 
-const SPRITE_PATH = './../../assets/sprites/pachequito.png';
 const SPRITE_X = 0;
 const SPRITE_Y = 0;
 const S_WIDTH = 125;
@@ -14,7 +14,7 @@ class PachecoLife extends GameObject {
      * @return PachecoLife
      */
     constructor(totalLife, scoreLabelX) {
-        super(SPRITE_PATH, SPRITE_X, SPRITE_Y, S_WIDTH, S_HEIGHT, 0, 25, 0.15);
+        super(SpriteImg, SPRITE_X, SPRITE_Y, S_WIDTH, S_HEIGHT, 0, 25, 0.15);
 
         this.x = scoreLabelX;
         this._startup(totalLife);

@@ -1,11 +1,12 @@
 import CatchHeartScreen from './Screens/CatchHeart.screen.js';
+import BackgroundSound from '../assets/sounds/bass_loop.wav';
 import StartGameScreen from './Screens/StartGame.screen.js';
 import GameOverScreen from './Screens/GameOver.screen.js';
 import GameEventHandler from './GameEventHandler.js';
 import Engine from './Engine.js';
 
 const BACKGROUND_SOUND = new Audio();
-BACKGROUND_SOUND.src = '../assets/sounds/bass_loop.wav';
+BACKGROUND_SOUND.src = BackgroundSound;
 
 class Game {
     /**
