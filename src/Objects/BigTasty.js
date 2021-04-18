@@ -1,8 +1,8 @@
 import ScoredObject from './ScoredObject.js';
 
-const SPRITE_PATH = './../../assets/sprites/sprites.png';
+const SPRITE_PATH = './../../assets/sprites/bigtasty.png';
 const SCORE_VALUE = 0;
-const SPRITE_X = 100;
+const SPRITE_X = 0;
 const SPRITE_Y = 0;
 const S_WIDTH = 100;
 const S_HEIGHT = 70;

@@ -1,6 +1,6 @@
 import ScoredObject from './ScoredObject.js';
 
-const SPRITE_PATH = './../../assets/sprites/sprites.png';
+const SPRITE_PATH = './../../assets/sprites/fries.png';
 const SCORE_VALUE = 0;
 const SPRITE_X = 0;
 const SPRITE_Y = 0;

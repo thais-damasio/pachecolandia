@@ -1,7 +1,7 @@
 import GameObject from './GameObject.js';
 
-const SPRITE_PATH = './../../assets/sprites/sprites.png';
-const SPRITE_X = 434;
+const SPRITE_PATH = './../../assets/sprites/pachequito.png';
+const SPRITE_X = 0;
 const SPRITE_Y = 0;
 const S_WIDTH = 125;
 const S_HEIGHT = 100;

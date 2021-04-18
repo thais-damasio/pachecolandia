@@ -1,11 +1,11 @@
 import ScoredObject from './ScoredObject.js';
 
-const SPRITE_PATH = './../../assets/sprites/sprites.png';
+const SPRITE_PATH = './../../assets/sprites/coracao.png';
 const SCORE_VALUE = 10;
-const SPRITE_X = 200;
+const SPRITE_X = 0;
 const SPRITE_Y = 0;
-const S_WIDTH = 100;
-const S_HEIGHT = 82;
+const S_WIDTH = 98;
+const S_HEIGHT = 80;
 
 class Heart extends ScoredObject {
     /**

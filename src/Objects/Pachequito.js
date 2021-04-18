@@ -1,8 +1,8 @@
 import DirectionsEnum from '../../utils/enum/Directions.enum.js';
 import GameObject from './GameObject.js';
 
-const SPRITE_PATH = './../../assets/sprites/sprites.png';
-const SPRITE_X = 434;
+const SPRITE_PATH = './../../assets/sprites/pachequito.png';
+const SPRITE_X = 0;
 const SPRITE_Y = 0;
 const S_WIDTH = 125;
 const S_HEIGHT = 170;
@@ -47,8 +47,8 @@ class Pachequito extends GameObject {
         this._countFramesJumping = 0;
         this._walkDirection = false;
         this.movimentos = [
-            { sX: 434, sY: 0, },
-            { sX: 434, sY: 170 }
+            { sX: 0, sY: 0, },
+            { sX: 0, sY: 170 }
         ];
     }
 

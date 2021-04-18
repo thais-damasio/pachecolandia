@@ -1,10 +1,10 @@
 import GameObject from './GameObject.js';
 
-const SPRITE_PATH = './../../assets/sprites/sprites.png';
+const SPRITE_PATH = './../../assets/sprites/background.png';
 const SPRITE_X = 0;
-const SPRITE_Y = 148;
-const S_WIDTH = 433;
-const S_HEIGHT = 258;
+const SPRITE_Y = 0;
+const S_WIDTH = 430;
+const S_HEIGHT = 257;
 
 class Background extends GameObject {
     /**
