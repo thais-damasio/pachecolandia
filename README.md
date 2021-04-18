@@ -24,7 +24,7 @@ O sistema trabalha somente com o uso de HTML, CSS e Javascript. Porém, no ambie
 
     ```npm run dev```
 
-* Os arquivos estáticos (*css*, *HTML* e *javascript*) do projeto serão salvos na pasta `dist/` quer será gerada na raíz do projeto. Para gerá-los basta utilizar o comando:
+* Os arquivos estáticos (*css*, *HTML* e *javascript*) do projeto serão salvos na pasta `dist/` que será gerada na raíz do projeto. Para gerá-los basta utilizar o comando:
 
     ```npm run build```
 
