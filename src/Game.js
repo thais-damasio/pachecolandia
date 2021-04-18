@@ -1,5 +1,6 @@
 import CatchHeartScreen from './Screens/CatchHeart.screen.js';
 import StartGameScreen from './Screens/StartGame.screen.js';
+import GameOverScreen from './Screens/GameOver.screen.js';
 import GameEventHandler from './GameEventHandler.js';
 import Engine from './Engine.js';
 
@@ -25,8 +26,9 @@ class Game {
      */
     _getScreens() {
         return {
-            CATCH_HEART: new CatchHeartScreen(this._gameWidth, this._gameHeight),
-            START: new StartGameScreen(this._gameWidth, this._gameHeight)
+            CATCHHEART: new CatchHeartScreen(this._gameWidth, this._gameHeight),
+            START: new StartGameScreen(this._gameWidth, this._gameHeight),
+            GAMEOVER: new GameOverScreen(this._gameWidth, this._gameHeight)
         };
     }
 
@@ -46,8 +48,12 @@ class Game {
      * @return {void}
      */
     _RegisterEvents() {
-        GameEventHandler.createEvent("GAMEOVER", () => {
+        GameEventHandler.createEvent("AGAIN", () => {
             this._engine.setActivePage('START');
+        });
+
+        GameEventHandler.createEvent("GAMEOVER", () => {
+            this._engine.setActivePage('GAMEOVER');
             BACKGROUND_SOUND.pause();
             BACKGROUND_SOUND.currentTime = 0;
         });
@@ -57,7 +63,7 @@ class Game {
             BACKGROUND_SOUND.loop = true;
             BACKGROUND_SOUND.play();
 
-            this._engine.setActivePage('CATCH_HEART');
+            this._engine.setActivePage('CATCHHEART');
         });
     }
 }
