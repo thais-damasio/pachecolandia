@@ -1,6 +1,16 @@
 import DirectionsEnum from '../../utils/enum/Directions.enum.js';
 import PachequitoObj from "../Objects/Pachequito.js";
 
+const evKeyDownR = new KeyboardEvent('keydown', { bubbles: false, key: "ArrowRight" });
+const evKeyDownL = new KeyboardEvent('keydown', { bubbles: false, key: "ArrowLeft" });
+const evKeyDownU = new KeyboardEvent('keydown', { bubbles: false, key: "ArrowUp" });
+
+
+document.getElementById("L").onmousedown = () => { dispatchEvent(evKeyDownL) };
+document.getElementById("R").onmousedown = () => { dispatchEvent(evKeyDownR) };
+document.getElementById("U").onmousedown = () => { dispatchEvent(evKeyDownU) };
+
+
 /**
  * Registers the buttons' events (keydown) of the game
  * @param {PachequitoObj} pachequitoObj - Object which represents Pachequito

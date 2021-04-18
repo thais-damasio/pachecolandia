@@ -1,5 +1,12 @@
 import PachequitoObj from "../Objects/Pachequito.js";
 
+
+const evKeyUpR = new KeyboardEvent('keyup', { bubbles: false, key: "ArrowRight" });
+const evKeyUpL = new KeyboardEvent('keyup', { bubbles: false, key: "ArrowLeft" });
+
+document.getElementById("L").onmouseup = () => { dispatchEvent(evKeyUpL) };
+document.getElementById("R").onmouseup = () => { dispatchEvent(evKeyUpR) };
+
 /**
  * Registers the buttons' events (keydown) of the game
  * @param {PachequitoObj} pachequitoObj - Object which represents Pachequito
