@@ -7,6 +7,7 @@ import BackgroundObj from '../Objects/Background.js';
 import PachequitoObj from '../Objects/Pachequito.js';
 import ScoreLabelObj from '../Objects/ScoreLabel.js';
 import PachecoLife from '../Objects/PachecoLife.js';
+import HelpLabelObj from '../Objects/HelpLabel.js';
 import BigTastyObj from '../Objects/BigTasty.js';
 import FriesObj from '../Objects/Fries.js';
 import HeartObj from '../Objects/Heart.js';
@@ -63,10 +64,12 @@ class CatchHeartScreen extends GameScreen {
         this._pachequitoObj = new PachequitoObj(this._backgroundObj.groundHeight, this._canvasWidth, this._canvasHeight);
         this._scoredObjects = this._criateScoredObjects();
         this._scoreLabelObj = new ScoreLabelObj(0);
+        this._helpLabelObj = new HelpLabelObj('Catch only the hearts!', this._canvasWidth, this._canvasHeight);
         this._pachecoLife = new PachecoLife(TOTAL_LIFES, this._scoreLabelObj.x);
 
         return [
-            this._backgroundObj, this._pachequitoObj, this._scoredObjects, this._scoreLabelObj, this._pachecoLife
+            this._backgroundObj, this._pachequitoObj, this._scoredObjects,
+            this._scoreLabelObj, this._pachecoLife, this._helpLabelObj
         ];
     }
 
