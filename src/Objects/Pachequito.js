@@ -142,6 +142,7 @@ class Pachequito extends GameObject {
         // Limits pachequito speed
         if (Math.abs(this.speedX) > SPEED_LIMIT_X)
             this.speedX = SPEED_LIMIT_X * factor;
+
         // Stop the pachequito when he it doesn't slip anymore
         if (!this._walkDirection && ((this.speedX <= 0 && factor <= 0) || (this.speedX >= 0 && factor >= 0))) {
             this.speedX = 0;

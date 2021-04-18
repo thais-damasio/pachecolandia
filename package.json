@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "dev": "webpack serve --mode development",
+    "dev": "webpack serve --host 0.0.0.0 --mode development",
     "build": "webpack --mode production"
   },
   "author": "",
