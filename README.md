@@ -18,9 +18,6 @@ Portanto Pachecolândia não é apenas um jogo, mas um projeto didático que vis
 ## Dependências
 O sistema trabalha somente com o uso de HTML, CSS e Javascript. Porém, no ambiente de desenvolvimento é apoiado por packages do **Node.js** :D
 
-### Principais Packages
-Teste
-
 ***
 ## Get Started
 * Para rodar o projeto basta utilizar o comando:
@@ -33,3 +30,7 @@ Teste
 
 [game]: https://img.icons8.com/nolan/24/visual-game-boy.png "Game"
 [heart]: https://img.icons8.com/material-two-tone/24/000000/novel.png "Heart"
+
+***
+## Agradecimentos
+Nos inspiramos no projeto [*Flappy Bird: Dev Soutinho*](https://github.com/omariosouto/flappy-bird-devsoutinho) para criar o Pachecolândia. Sugerimos dar uma olhada nesse outro jogo feito em Javascript também :D
