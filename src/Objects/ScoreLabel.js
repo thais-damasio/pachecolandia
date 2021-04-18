@@ -2,8 +2,9 @@ import GameObject from './GameObject.js';
 
 const FONT_STYLE = "bold 15pt Courier";
 const FONT_COLOR = "#000000";
-const Y = 20;
+const SIZE_TEXT = 80;
 const X = 5;
+const Y = 20;
 
 class ScoreLabel extends GameObject {
     /**
@@ -34,7 +35,7 @@ class ScoreLabel extends GameObject {
     draw(context) {
         context.fillStyle = FONT_COLOR;
         context.font = FONT_STYLE;
-        context.fillText(`Score: ${this.totalScore}`, this.x, this.y);
+        context.fillText(`Score: ${this.totalScore}`, this.x, this.y, SIZE_TEXT);
     }
 }
 
