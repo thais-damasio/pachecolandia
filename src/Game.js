@@ -1,4 +1,4 @@
-import CatchHeartScreen from './Screens/CatchHeart.screen.js';
+import CatchBroccoliScreen from './Screens/CatchBroccoli.screen.js';
 import BackgroundSound from '../assets/sounds/bass_loop.wav';
 import StartGameScreen from './Screens/StartGame.screen.js';
 import GameOverScreen from './Screens/GameOver.screen.js';
@@ -27,7 +27,7 @@ class Game {
      */
     _getScreens() {
         return {
-            CATCHHEART: new CatchHeartScreen(this._gameWidth, this._gameHeight),
+            CATCHBROCCOLI: new CatchBroccoliScreen(this._gameWidth, this._gameHeight),
             START: new StartGameScreen(this._gameWidth, this._gameHeight),
             GAMEOVER: new GameOverScreen(this._gameWidth, this._gameHeight)
         };
@@ -64,7 +64,7 @@ class Game {
             BACKGROUND_SOUND.loop = true;
             BACKGROUND_SOUND.play();
 
-            this._engine.setActivePage('CATCHHEART');
+            this._engine.setActivePage('CATCHBROCCOLI');
         });
     }
 }

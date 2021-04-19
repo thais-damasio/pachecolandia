@@ -12,7 +12,7 @@ import PachecoLife from '../Objects/PachecoLife.js';
 import HelpLabelObj from '../Objects/HelpLabel.js';
 import BigTastyObj from '../Objects/BigTasty.js';
 import FriesObj from '../Objects/Fries.js';
-import HeartObj from '../Objects/Heart.js';
+import BroccoliObj from '../Objects/Broccoli.js';
 import GameScreen from './GameScreen.js';
 import Engine from '../Engine.js';
 
@@ -28,17 +28,17 @@ const TOTAL_SCORED_OBJECTS = 4;
 const TYPES_SCORED_OBJECTS = [
     { class: FriesObj, max: 3, total: 0 },
     { class: BigTastyObj, max: 3, total: 0 },
-    { class: HeartObj, max: 1, total: 0 }
+    { class: BroccoliObj, max: 1, total: 0 }
 ];
 
 const TOTAL_LIFES = 3;
 
-class CatchHeartScreen extends GameScreen {
+class CatchBroccoliScreen extends GameScreen {
     /**
      * Constructor
      * @param {number} canvasWidth - Game canvas width
      * @param {number} canvasHeight - Game canvas height
-     * @return CatchHeartScreen
+     * @return CatchBroccoliScreen
      */
     constructor(canvasWidth, canvasHeight) {
         super(canvasWidth, canvasHeight);
@@ -66,7 +66,7 @@ class CatchHeartScreen extends GameScreen {
         this._pachequitoObj = new PachequitoObj(this._backgroundObj.groundHeight, this._canvasWidth, this._canvasHeight);
         this._scoredObjects = this._criateScoredObjects();
         this._scoreLabelObj = new ScoreLabelObj(0);
-        this._helpLabelObj = new HelpLabelObj('Catch only the hearts!', this._canvasWidth, this._canvasHeight);
+        this._helpLabelObj = new HelpLabelObj('Catch only the broccolis!', this._canvasWidth, this._canvasHeight);
         this._pachecoLife = new PachecoLife(TOTAL_LIFES, this._scoreLabelObj.x);
 
         return [
@@ -166,4 +166,4 @@ class CatchHeartScreen extends GameScreen {
     }
 }
 
-export default CatchHeartScreen;
+export default CatchBroccoliScreen;
