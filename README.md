@@ -2,7 +2,7 @@
 
 <p align="center">
     <em>
-[...] porque BigTasty é bom, mas engorda.</em></br>
+[...] porque Fast Food é bom, mas engorda.</em></br>
   <a href="https://pachecolandia.herokuapp.com/"><img alt="Logo do projeto" src="./assets/img/pachequito.png" /></a>
 </p>
 
