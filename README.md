@@ -16,7 +16,7 @@ Portanto Pachecolândia não é apenas um jogo, mas um projeto didático que vis
 
 ***
 ## Desenvolvedores
-* [Thaís Damásio](https://github.com/Thais-Damasio)
+* [Thaís Damásio](https://github.com/thais-damasio)
 * [Vinícius Pacheco](https://github.com/vinicpac)
 
 ***
@@ -42,4 +42,4 @@ Nos inspiramos no projeto [*Flappy Bird: Dev Soutinho*](https://github.com/omari
 
 ***
 ## Licença do Projeto
-[MIT License](./LICENSE.md) © [Thaís Damásio](https://github.com/Thais-Damasio)
+[MIT License](./LICENSE.md) © [Thaís Damásio](https://github.com/thais-damasio) | [Vinícius Pacheco](https://github.com/vinicpac)
