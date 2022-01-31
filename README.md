@@ -7,29 +7,29 @@
 </p>
 
 
-Acesse o jogo [aqui](https://pachecolandia.herokuapp.com/) ![love][Heart].
+You can check out the game at this [link](https://pachecolandia.herokuapp.com/) ![love][Heart].
 ***
-## Descrição
-Este projeto surgiu a partir de um personagem criado por [Thaís](https://github.com/Thais-Damasio) através de uma brincadeira feita com [Vinícius](https://github.com/vinicpac). Os dois se propuseram criar um jogo desenvolvido puramente com Javascritpt, CSS e HTML. A ideia principal do projeto seria construir uma estrutura organizada e didática para que possa ser feito outros jogos em Javascript através da mesma.
+## Description
+This project came from a character created by [Thaís](https://github.com/Thais-Damasio) and [Vinícius](https://github.com/vinicpac). The main idea is building an organized and didactic structure to make games using purely Javascript, CSS and HTML.
 
-Portanto Pachecolândia não é apenas um jogo, mas um projeto didático que visa auxiliar novos desenvolvedores a conheceram um pouco mais sobre o mundo Javascript ![love][Heart].
+Therefore, Pachecolândia is not only a game, but it is a didactic project which aims helping new developers to know a little bit more about the Javascript world![love][Heart].
 
 ***
-## Desenvolvedores
+## Developers
 * [Thaís Damásio](https://github.com/thais-damasio)
 * [Vinícius Pacheco](https://github.com/vinicpac)
 
 ***
-## Dependências
-O sistema trabalha somente com o uso de HTML, CSS e Javascript. Porém, no ambiente de desenvolvimento é apoiado por packages do **Node.js** :D
+## Dependences
+The game works only with HTML, CSS and Javascript files. However, the development environment is supported by **Node.js** packages :D
 
 ***
 ## Get Started
-* Para rodar o projeto basta utilizar o comando:
+* To run the project use the command:
 
     ```npm run dev```
 
-* Os arquivos estáticos (*css*, *HTML* e *javascript*) do projeto serão salvos na pasta `dist/` que será gerada na raíz do projeto. Para gerá-los basta utilizar o comando:
+* The static files (*CSS*, *HTML* and *javascript*) of the project are going to save into the folder `dist/` which is going to be generated at the project root. To generate them use the command:
 
     ```npm run build```
 
@@ -37,8 +37,8 @@ O sistema trabalha somente com o uso de HTML, CSS e Javascript. Porém, no ambie
 [heart]: https://img.icons8.com/material-two-tone/24/000000/novel.png "Heart"
 
 ***
-## Agradecimentos
-Nos inspiramos no projeto [*Flappy Bird: Dev Soutinho*](https://github.com/omariosouto/flappy-bird-devsoutinho) para criar o Pachecolândia. Sugerimos dar uma olhada nesse outro jogo feito em Javascript também :D
+## Acknowledgement
+This project was inspired by [*Flappy Bird: Dev Soutinho*](https://github.com/omariosouto/flappy-bird-devsoutinho). We suggest you take a look at this other project which also uses Javascript :D
 
 ***
 ## Licença do Projeto
