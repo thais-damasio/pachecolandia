@@ -41,5 +41,5 @@ The game works only with HTML, CSS and Javascript files. However, the developmen
 This project was inspired by [*Flappy Bird: Dev Soutinho*](https://github.com/omariosouto/flappy-bird-devsoutinho). We suggest you take a look at this other project which also uses Javascript :D
 
 ***
-## Licença do Projeto
+## License
 [MIT License](./LICENSE.md) © [Thaís Damásio](https://github.com/thais-damasio) | [Vinícius Pacheco](https://github.com/vinicpac)
